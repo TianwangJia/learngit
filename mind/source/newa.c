@@ -40,6 +40,14 @@ int new (char *account_name, MIND *daotu)
 	{
 		newmouse(&MouseX, &MouseY, &press);
 
+		if (newmindname.flag != 1)
+		{
+			while (bioskey(1))
+			{
+				getch();
+			}
+		}
+
 		input_mind(100, 408, 5, &newmindname);
 		//回到编辑页
 		if (mouse_press(540, 448, 610, 468) == 2) //在按钮上未点击

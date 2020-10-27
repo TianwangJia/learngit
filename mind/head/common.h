@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <bios.h>
+#include <conio.h>
+#include <direct.h>
 #include"hz.h"
 #include <dos.h>
 #include <time.h>

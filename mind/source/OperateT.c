@@ -49,7 +49,8 @@ int daotujud(char *account_name, char *mind_name)
         flag = 0;
         return flag;
     }
-    if ((mind = (MIND *)malloc(sizeof(MIND)) == NULL)) //分配内存失败，退出程序
+    mind = (MIND *)malloc(sizeof(MIND)); 
+	if (mind== NULL) //分配内存失败，退出程序
     {
         closegraph();
         printf("\nMemory location failed.(from daotujud_malloc)\n");
@@ -331,7 +332,7 @@ void newdrt(char *account_name)
 {
     char indexer[15 + 1]; //新建的文件夹索引
     sprintf(indexer, ".\\daotu\\%s", account_name);
-    if (mkdir(indexer) != 0) //新建失败，异常退出
+	if (mkdir(indexer) != 0) //新建失败，异常退出
     {
         closegraph();
         printf("fail(from newdrt)");

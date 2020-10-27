@@ -154,7 +154,6 @@ Others:
 int rank_time(DATEINFO *timeline, DATEHAPPEN time)
 {
     int i, j, k, n;
-    int flag = 0;
     DATEHAPPEN temp;
     if (timeline->daynum == 0)
     {

@@ -153,7 +153,8 @@ int judge_samename(char *name)
         flag = 0;
         return flag;
     }
-    if ((user = (USER *)malloc(sizeof(USER)) == NULL)) //分配内存失败，退出程序
+    user = (USER *)malloc(sizeof(USER));
+    if (user == NULL) //分配内存失败，退出程序
     {
         closegraph();
         printf("\nMemory location failed.(from juse_samename)\n");
@@ -267,7 +268,8 @@ void write_info(char *name, char *card, char *password)
         delay(3000);
         exit(1);
     }
-    if ((user = (USER *)malloc(sizeof(USER)) == NULL)) //分配内存失败，退出程序
+    user = (USER *)malloc(sizeof(USER));
+    if (user == NULL) //分配内存失败，退出程序
     {
         closegraph();
         printf("\nMemory location failed.(from write_info)\n");
@@ -349,7 +351,8 @@ int right_ID(char *name, char *card)
         delay(3000);
         exit(1);
     }
-    if ((user = (USER *)malloc(sizeof(USER)) == NULL)) //分配内存失败，退出程序
+    user = (USER *)malloc(sizeof(USER));
+    if (user == NULL) //分配内存失败，退出程序
     {
         closegraph();
         printf("\nMemory location failed.(from right_ID)\n");
@@ -417,7 +420,8 @@ void rewrite_key(char *name, char *newkey)
         delay(3000);
         exit(1);
     }
-    if ((user = (USER *)malloc(sizeof(USER)) == NULL)) //分配内存失败，退出程序
+    user = (USER *)malloc(sizeof(USER));
+    if (user == NULL) //分配内存失败，退出程序
     {
         closegraph();
         printf("\nMemory location failed.(from rewrite_key)\n");
@@ -478,7 +482,8 @@ int right_key(char *name, char *password)
         delay(3000);
         exit(1);
     }
-    if ((user = (USER *)malloc(sizeof(USER)) == NULL)) //分配内存失败，退出程序
+    user = (USER *)malloc(sizeof(USER));
+    if (user == NULL) //分配内存失败，退出程序
     {
         closegraph();
         printf("\nMemory location failed.(from right_key)\n");

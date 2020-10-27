@@ -136,7 +136,7 @@ void editfb(FISHINFO *editp)
                 bar(248 - 114 + 164 * (rankbone % 2), 80 + 24 + rankbone * 40, 248 - 50 + 164 * (rankbone % 2), 80 + 40 + rankbone * 40);
                 line(248, 80 + 20 + rankbone * 40, 248 - 50 + 100 * (rankbone % 2), 80 + 40 + rankbone * 40);
 			    rectangle(248 - 114 + 164 * (rankbone % 2), 80 + 24 + rankbone * 40, 248 - 50 + 164 * (rankbone % 2), 80 + 40 + rankbone * 40);
-                edit_yugu(248 - 114 + 164 * (rankbone % 2), 80 + 24 + rankbone * 40, &minput, editp->bone[rankbone].content,BLACK);
+                edit_yugu(248 - 114 + 164 * (rankbone % 2), 80 + 24 + rankbone * 40, &minput, &((editp->bone)[rankbone]),BLACK);
                 strcpy(minput.str, "");
                 minput.cursor = 0;
             }
