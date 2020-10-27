@@ -1,5 +1,5 @@
 /**********************************************
-Description: 登录注册所需工具函数
+Description: 登录注册所需工具函数，操作界面所需部分工具函数
 Function list :  input_info 键盘输入显示函数
                  judge_samename 检查用户名是否已存在函数
                  judge_ID 检查身份证号格式是否符合要求
@@ -9,9 +9,10 @@ Function list :  input_info 键盘输入显示函数
                  right_ID 判断身份证号是否正确
                  rewrite_key 写入新密码
                  right_key 判断密码是否正确
-                 newdrt  为新用户新建文件夹
+                 findmind 根据传入的用户名与思维导图名找到用户中的MIND结构体
+                 delete_mind 删除用户文件中的指定MIND结构体,并删除对应的导图文件
 Attention:
-Author： 贾田旺，倪启源
+Author： 贾田旺
 History:
 ***********************************************/
 
@@ -44,7 +45,7 @@ void input_info(int x, int y, int size, int mode, ENTER *content) //将信息输入到
         {
             content->flag = 1;
             clrmous(MouseX, MouseY);
-            delay(5);//FIXME
+            delay(5); //FIXME
 
             setcolor(RED);
             setlinestyle(0, 0, 1);
@@ -56,7 +57,7 @@ void input_info(int x, int y, int size, int mode, ENTER *content) //将信息输入到
         {
             content->flag = 0;
             clrmous(MouseX, MouseY);
-            delay(5);//FIXME
+            delay(5); //FIXME
 
             setcolor(WHITE);
             setlinestyle(0, 0, 1);
@@ -100,7 +101,7 @@ void input_info(int x, int y, int size, int mode, ENTER *content) //将信息输入到
             {
                 setcolor(DARKGRAY);
                 clrmous(MouseX, MouseY);
-                delay(5);//FIXME
+                delay(5); //FIXME
                 outtextxy(x, y, content->str);
                 line(x + (content->cursor) * (2 * size - 2) + 3, y, x + (content->cursor) * (2 * size - 2) + 3, y + 2 * (2 * size - 2));
             }
@@ -110,7 +111,7 @@ void input_info(int x, int y, int size, int mode, ENTER *content) //将信息输入到
                 for (i = 0; i < content->cursor; i++)
                 {
                     clrmous(MouseX, MouseY);
-                    delay(5);//FIXME
+                    delay(5); //FIXME
                     outtextxy(x + i * (2 * size - 2), y, "*");
                 }
                 line(x + (content->cursor) * (2 * size - 2) + 3, y, x + (content->cursor) * (2 * size - 2) + 3, y + 2 * (2 * size - 2));
@@ -519,24 +520,134 @@ int right_key(char *name, char *password)
 }
 
 /**************************************************
-Name: newdrt
-Function：新建一个存放新用户导图文件的文件夹
-Calls: 
-Called By: sign_up
-Parameter: account_name 用户名
-Return: 
-Author: 倪启源
-Others: 
+Name: findmind
+Function：根据传入的用户名与思维导图名找到用户中的MIND结构体
+Calls: 无
+Called By: Open.c
+Parameter: account_name 账户名
+           mindname 思维导图名
+Return: MIND 结构体
+Author: 贾田旺
+Others:
 **************************************************/
-void newdrt(char *account_name)
+MIND findmind(char *account_name, char *mindname)
 {
-    char indexer[15 + 1]; //新建的文件夹索引
-    sprintf(indexer, ".\\daotu\\%s", account_name);
-    if (mkdir(indexer) != 0) //新建失败，异常退出
+    FILE *fp;
+    MIND mind1;
+    int num;            //用户所拥有的导图文件个数
+    int i;              //计数用
+    char place[25 + 1]; //存放用户所拥有的文件的信息索引
+    sprintf(place, ".\\UserInfo\\%s.dat", account_name);
+
+    if ((fp = fopen(place, "rb")) == NULL) //打开失败，异常退出
     {
         closegraph();
-        printf("fail(from newdrt)");
+        printf("\nFile UserInfo opening error.(from findmind)\n");
         delay(3000);
         exit(1);
     }
+    fseek(fp, 0L, SEEK_END);
+    num = ftell(fp) / sizeof(MIND); //得到导图数量
+
+    for (i = 0; i < num; i++)
+    {
+        fseek(fp, i * sizeof(MIND), SEEK_SET);
+        fread(&mind1, sizeof(MIND), 1, fp);
+
+        if (!strcmp(mind1.mindname, mindname))
+        {
+            break;
+        }
+    }
+
+    if (fclose(fp) != 0) //关闭文件错误
+    {
+        closegraph();
+        printf("\nFile UserInfo closed error.(from findmind)\n");
+        delay(3000);
+        exit(1);
+    }
+
+    return mind1;
+}
+
+/**************************************************
+Name: delete_mind
+Function：删除用户文件中的指定MIND结构体,并删除对应的导图文件
+Calls: 无
+Called By: edit.c
+Parameter: account_name 账户名
+           mindname 导图名
+Return: 无
+Author: 贾田旺
+Others: 无
+**************************************************/
+void delete_mind(char *account_name, char *mindname)
+{
+    FILE *fp, *ftmp;
+    MIND *mind1;
+    int i, num;                                         //计数，用户拥有导图个数
+    char place_user[25 + 1];                            //存放用户文件的信息索引
+    char place_tp[24 + 1] = ".\\UserInfo\\tmp_dmd.dat"; //暂时
+    char place_daotu[32 + 1];                           //导图文件索引
+    sprintf(place_user, ".\\UserInfo\\%s.dat", account_name);
+    sprintf(place_daotu, ".\\daotu\\%s\\%s.dat", account_name, mindname);
+
+    if ((fp = fopen(place_user, "rb")) == NULL) //打开失败，异常退出
+    {
+        closegraph();
+        printf("\nFile UserInfo opening error.(from delete_mind1)\n");
+        delay(3000);
+        exit(1);
+    }
+    if ((ftmp = fopen(place_tp, "wb+")) == NULL) //打开失败，异常退出
+    {
+        closegraph();
+        printf("\nFile UserInfo opening error.(from delete_mind2)\n");
+        delay(3000);
+        exit(1);
+    }
+    mind1 = (MIND *)malloc(sizeof(MIND));
+    if (mind1 == NULL) //分配内存失败，退出程序
+    {
+        closegraph();
+        printf("\nMemory location failed.(from delete_mind)\n");
+        delay(3000);
+        exit(1);
+    }
+
+    fseek(fp, 0L, SEEK_END);
+    num = ftell(fp) / sizeof(MIND); //得到导图数量
+
+    for (i = 0; i < num; i++)
+    {
+        fseek(fp, i * sizeof(MIND), SEEK_SET);
+        fread(mind1, sizeof(MIND), 1, fp);
+
+        if (strcmp(mind1->mindname, mindname)) //如果和要删除的导图MIND不同
+        {
+            fwrite(mind1, sizeof(MIND), 1, ftmp);
+        }
+    }
+
+    if (fclose(fp) != 0) //关闭文件错误
+    {
+        closegraph();
+        printf("\nFile UserInfo closed error.(from delete_mind1)\n");
+        delay(3000);
+        exit(1);
+    }
+    if (fclose(ftmp) != 0) //关闭文件错误
+    {
+        closegraph();
+        printf("\nFile UserInfo closed error.(from delete_mind2)\n");
+        delay(3000);
+        exit(1);
+    }
+    free(mind1);
+    mind1 = NULL;
+
+    remove(place_user);
+    rename(place_tp, place_user);
+    remove(place_daotu);
 }

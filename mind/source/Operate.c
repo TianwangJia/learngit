@@ -1,25 +1,31 @@
 
 /**********************************************
 Description:  完成编辑主页面及相关功能
-Function list :  operate   编辑思维导图功能
-                 operate_screen  绘制编辑页面
+Function list :  operate   操作思维导图功能
+                 operate_screen  绘制操作页面
 Attention:  
-Author:  贾田旺,倪启源
+Author:  贾田旺
 History:  
 ***********************************************/
 
 #include "common.h"
 #include "operate.h"
-#include <graphics.h>
 
 /**************************************************
 Name: operate
 Function：编辑思维导图功能
-Calls: 
+Calls:  drawmind 
+        drawmind_tr
+        drawbone
+        drawdate
+        new
+        operate_screen
+        opena
+        delete_mind
 Called By: main
 Parameter: account_name 
 Return: page 页面跳转
-Author: 贾田旺，倪启源
+Author: 贾田旺
 Others: 无
 **************************************************/
 int operate(char *account_name)
@@ -28,23 +34,6 @@ int operate(char *account_name)
 	char temdt[30 + 1]; //当前思维导图文件位置索引
 	FILE *fp; //存放当前打开的文件指针
 	int open_ste; //存放打开状态
-    //方向键形状数组
-    // int a[4][8] = {{496 + 16 + 32 + 8 + 16, 392 + 6,
-    //                 496 + 16 + 32 + 8 + 4, 424 - 6,
-    //                 496 + 16 + 32 + 8 + 4 + 24, 424 - 6,
-    //                 496 + 16 + 32 + 8 + 16, 392 + 6},
-    //                {496 + 16 + 32 + 8 + 16, 464 - 4,
-    //                 496 + 16 + 32 + 8 + 4, 432 + 8,
-    //                 496 + 16 + 32 + 8 + 4 + 24, 432 + 8,
-    //                 496 + 16 + 32 + 8 + 16, 464 - 4},
-    //                {496 + 16 + 6, 432 + 16,
-    //                 496 + 16 + 32 - 6, 432 + 4,
-    //                 496 + 16 + 32 - 6, 464 - 4,
-    //                 496 + 16 + 6, 432 + 16},
-    //                {496 + 16 + 32 + 8 + 32 + 8 + 32 - 6, 432 + 16,
-    //                 496 + 16 + 32 + 8 + 32 + 8 + 6, 432 + 4,
-    //                 496 + 16 + 32 + 8 + 32 + 8 + 6, 464 - 4,
-    //                 496 + 16 + 32 + 8 + 32 + 8 + 32 - 6, 432 + 16}};
 	MINDBOX oper_temp[HORI][VERT];
 	MINDBOX oper_temptr[HORI][VERTREE];
 	FISHINFO oper_fish;

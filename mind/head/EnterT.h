@@ -1,5 +1,5 @@
 /**********************************************
-Description: 登录注册所需工具函数的头文件
+Description: 登录注册所需工具函数及部分操作界面工具函数的头文件
 Include:  无
 Function list :  input_info 键盘输入显示函数
                  judge_samename 检查用户名是否已存在函数
@@ -10,7 +10,8 @@ Function list :  input_info 键盘输入显示函数
                  right_ID 判断身份证号是否正确
                  rewrite_key 写入新密码
                  right_key  判断密码是否正确
-                 newdrt  为新用户新建文件夹
+                 findmind   找到用户中的MIND结构体
+                 delete_mind  删除用户文件中的指定MIND结构体,并删除对应的导图文件
 Attention:
 Author：贾田旺
 History:
@@ -37,6 +38,8 @@ void rewrite(char *name, char *newkey); //写入新密码
 
 int right_key(char *name, char *password); //判断密码是否正确
 
-void newdrt(char *account_name); //为新用户新建文件夹
+MIND findmind(char *account_name, char *mindname); //找到用户中的MIND结构体
+
+void delete_mind(char *account_name, char *mindname); //删除用户文件中的指定MIND结构体,并删除对应的导图文件
 
 #endif // !_ENTERT_H_

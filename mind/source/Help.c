@@ -21,7 +21,7 @@ Called By: main
 Parameter: 无
 Return: page 页面跳转
 Author: 贾田旺
-Others: 未完成
+Others: 
 **************************************************/
 int help()
 {

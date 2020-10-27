@@ -1,6 +1,9 @@
 /**********************************************
 Description:  编辑思维导图工具函数
-Function list :  
+Function list : edit_mind
+                judge_time
+                edit_yugu
+                rank_time
 Attention:  
 Author:  贾田旺
 History:  
@@ -10,12 +13,14 @@ History:
 /**************************************************
 Name: edit_mind
 Function：思维导图内容文本编辑函数
-Calls: 
-Called By: 
-Parameter: x 输入框左边界
-           y 输入框上边界
-           message 输入导图信息结构体
-           color 显示字符颜色
+Calls: 无
+Called By:  Edit
+            Edittr
+Parameter:  x 输入框左边界
+            y 输入框上边界
+            message 输入导图信息结构体
+            mind 导图信息结构体
+            color 显示字符颜色
 Return: 
 Author: 贾田旺
 Others: 框图大小 64*16
@@ -39,7 +44,7 @@ void edit_mind(int x, int y, MINPUT *message, MINDBOX *mind, int color)
 
     while (1)
     {
-        //newmouse(&MouseX, &MouseY, &press);//FIXME
+        //newmouse(&MouseX, &MouseY, &press);
         if (kbhit())
         {
             temp = getch();
@@ -94,10 +99,10 @@ void edit_mind(int x, int y, MINPUT *message, MINDBOX *mind, int color)
 /**************************************************
 Name: judge_time
 Function：判断传入时间是否正确
-Calls: 
-Called By: 
+Calls: 无
+Called By:  Edidate
 Parameter: time 存储年月日结构体
-Return: 
+Return: 格式正确返回1，格式错误返回0
 Author: 贾田旺
 Others: 
 **************************************************/
@@ -136,12 +141,90 @@ int judge_time(DATEHAPPEN time)
 }
 
 /**************************************************
+Name: rank_time
+Function：为时间轴输入的时间进行排序
+Calls: 无
+Called By: Editdate
+Parameter:  timeline 当前时间轴内容
+            time     待插入时间点
+Return: 1 添加成功 0添加失败
+Author: 贾田旺
+Others: 
+**************************************************/
+int rank_time(DATEINFO *timeline, DATEHAPPEN time)
+{
+    int i, j, k, n;
+    int flag = 0;
+    DATEHAPPEN temp;
+    if (timeline->daynum == 0)
+    {
+        timeline->date[0] = time;
+        timeline->daynum++;
+        return 1;
+    }
+    else if (timeline->daynum == MAXDATE)
+    {
+        return 0;
+    }
+    for (i = timeline->daynum - 1; i >= 0; i--)
+    {
+        if (timeline->date[i].year < time.year)
+        {
+            for (j = timeline->daynum - 1; j > i; j--)
+            {
+                if (timeline->date[j].year == time.year && timeline->date[j].month < time.month)
+                {
+                    for (k = timeline->daynum - 1; k > j; k--)
+                    {
+                        if (timeline->date[k].year == time.year && timeline->date[k].month == time.month && timeline->date[k].day < time.day)
+                        {
+                            for (n = timeline->daynum; n > k + 1; n--)
+                            {
+                                timeline->date[n] = timeline->date[n - 1];
+                            }
+                            timeline->date[n] = time;
+                            timeline->daynum++;
+                            return 1;
+                        }
+                    }
+                    for (n = timeline->daynum; n > j + 1; n--)
+                    {
+                        timeline->date[n] = timeline->date[n - 1];
+                    }
+                    timeline->date[n] = time;
+                    timeline->daynum++;
+                    return 1;
+                }
+            }
+            for (n = timeline->daynum; n > i + 1; n--)
+            {
+                timeline->date[n] = timeline->date[n - 1];
+            }
+            timeline->date[n] = time;
+            timeline->daynum++;
+            return 1;
+        }
+    }
+    for (n = timeline->daynum; n > 0; n--)
+    {
+        timeline->date[n] = timeline->date[n - 1];
+    }
+    timeline->date[n] = time;
+    timeline->daynum++;
+    return 1;
+}
+
+/**************************************************
 Name: eidt_yugu
 Function：编辑鱼骨图文本
-Calls: 
-Called By: 
-Parameter: 
-Return: 
+Calls: 无
+Called By: Editfb
+Parameter: x 输入框左边界
+            y 输入框上边界
+            message 输入导图信息结构体
+            bone 鱼骨框信息结构体
+            color 显示字符颜色
+Return: 无
 Author: 贾田旺
 Others: 鱼骨为线性，长度64
 **************************************************/
@@ -213,78 +296,4 @@ void edit_yugu(int x, int y, MINPUT *info, FISHBONE *bone, int color)
 
     strcpy(bone->content, info->str);
     return;
-}
-
-/**************************************************
-Name: rank_time
-Function：为时间轴输入的时间进行排序
-Calls: 
-Called By: 
-Parameter:  timeline 当前时间轴内容
-            time     待插入时间点
-Return: 1 添加成功 0添加失败
-Author: 贾田旺
-Others: //TODO 差判定满组，差最后补齐
-**************************************************/
-int rank_time(DATEINFO *timeline, DATEHAPPEN time)
-{
-    int i, j, k, n;
-    int flag = 0;
-    DATEHAPPEN temp;
-    if (timeline->daynum == 0)
-    {
-        timeline->date[0] = time;
-        timeline->daynum++;
-        return 1;
-    }
-    else if (timeline->daynum == MAXDATE)
-    {
-        return 0;
-    }
-    for (i = timeline->daynum - 1; i >= 0; i--)
-    {
-        if (timeline->date[i].year < time.year)
-        {
-            for (j = timeline->daynum - 1; j > i; j--)
-            {
-                if (timeline->date[j].year == time.year && timeline->date[j].month < time.month)
-                {
-                    for (k = timeline->daynum - 1; k > j; k--)
-                    {
-						if (timeline->date[k].year == time.year && timeline->date[k].month == time.month && timeline->date[k].day < time.day)
-                        {
-                            for (n = timeline->daynum; n > k + 1; n--)
-                            {
-                                timeline->date[n] = timeline->date[n - 1];
-                            }
-                            timeline->date[n] = time;
-                            timeline->daynum++;
-                            return 1;
-                        }
-                    }
-                    for (n = timeline->daynum; n > j + 1; n--)
-                    {
-                        timeline->date[n] = timeline->date[n - 1];
-                    }
-                    timeline->date[n] = time;
-                    timeline->daynum++;
-                    return 1;
-                }
-            }
-            for (n = timeline->daynum; n > i + 1; n--)
-            {
-                timeline->date[n] = timeline->date[n - 1];
-            }
-            timeline->date[n] = time;
-            timeline->daynum++;
-            return 1;
-        }
-    }
-    for (n = timeline->daynum; n > 0; n--)
-    {
-        timeline->date[n] = timeline->date[n - 1];
-    }
-    timeline->date[n] = time;
-    timeline->daynum++;
-    return 1;
 }

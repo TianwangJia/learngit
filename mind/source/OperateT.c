@@ -318,148 +318,25 @@ void input_mind(int x, int y, int size, ENTER *content) //½«ĞÅÏ¢ÊäÈëµ½contentÖĞ£
 }
 
 /**************************************************
-Name: findmind
-Function£º¸ù¾İ´«ÈëµÄÓÃ»§ÃûÓëË¼Î¬µ¼Í¼ÃûÕÒµ½ÓÃ»§ÖĞµÄMIND½á¹¹Ìå
-Calls: ÎŞ
-Called By: Open.c
-Parameter: account_name ÕË»§Ãû
-           mindname Ë¼Î¬µ¼Í¼Ãû
-Return: MIND ½á¹¹Ìå
-Author: ¼ÖÌïÍú
-Others:
+Name: newdrt
+Function£ºĞÂ½¨Ò»¸ö´æ·ÅĞÂÓÃ»§µ¼Í¼ÎÄ¼şµÄÎÄ¼ş¼Ğ
+Calls: 
+Called By: sign_up
+Parameter: account_name ÓÃ»§Ãû
+Return: 
+Author: ÄßÆôÔ´
+Others: 
 **************************************************/
-MIND findmind(char *account_name, char *mindname)
+void newdrt(char *account_name)
 {
-    FILE *fp;
-    MIND mind1;
-    int num;            //ÓÃ»§ËùÓµÓĞµÄµ¼Í¼ÎÄ¼ş¸öÊı
-    int i;              //¼ÆÊıÓÃ
-    char place[25 + 1]; //´æ·ÅÓÃ»§ËùÓµÓĞµÄÎÄ¼şµÄĞÅÏ¢Ë÷Òı
-    sprintf(place, ".\\UserInfo\\%s.dat", account_name);
-
-    if ((fp = fopen(place, "rb")) == NULL) //´ò¿ªÊ§°Ü£¬Òì³£ÍË³ö
+    char indexer[15 + 1]; //ĞÂ½¨µÄÎÄ¼ş¼ĞË÷Òı
+    sprintf(indexer, ".\\daotu\\%s", account_name);
+    if (mkdir(indexer) != 0) //ĞÂ½¨Ê§°Ü£¬Òì³£ÍË³ö
     {
         closegraph();
-        printf("\nFile UserInfo opening error.(from findmind)\n");
+        printf("fail(from newdrt)");
         delay(3000);
         exit(1);
     }
-    fseek(fp, 0L, SEEK_END);
-    num = ftell(fp) / sizeof(MIND); //µÃµ½µ¼Í¼ÊıÁ¿
-
-    for (i = 0; i < num; i++)
-    {
-        fseek(fp, i * sizeof(MIND), SEEK_SET);
-        fread(&mind1, sizeof(MIND), 1, fp);
-
-        if (!strcmp(mind1.mindname, mindname))
-        {
-            break;
-        }
-    }
-
-    if (fclose(fp) != 0) //¹Ø±ÕÎÄ¼ş´íÎó
-    {
-        closegraph();
-        printf("\nFile UserInfo closed error.(from findmind)\n");
-        delay(3000);
-        exit(1);
-    }
-
-    return mind1;
 }
-
-/**************************************************
-Name: delete_mind
-Function£ºÉ¾³ıÓÃ»§ÎÄ¼şÖĞµÄÖ¸¶¨MIND½á¹¹Ìå,²¢É¾³ı¶ÔÓ¦µÄµ¼Í¼ÎÄ¼ş
-Calls: ÎŞ
-Called By: edit.c
-Parameter: account_name ÕË»§Ãû
-           mindname µ¼Í¼Ãû
-Return: ÎŞ
-Author: ¼ÖÌïÍú
-Others: ÎŞ
-**************************************************/
-void delete_mind(char *account_name, char *mindname)
-{
-    FILE *fp, *ftmp;
-    MIND *mind1;
-    int i, num;                                      //¼ÆÊı£¬ÓÃ»§ÓµÓĞµ¼Í¼¸öÊı
-    char place_user[25 + 1];                         //´æ·ÅÓÃ»§ÎÄ¼şµÄĞÅÏ¢Ë÷Òı
-    char place_tp[24 + 1] = ".\\UserInfo\\tmp_dmd.dat"; //ÔİÊ±
-    char place_daotu[32 + 1];                        //µ¼Í¼ÎÄ¼şË÷Òı
-    sprintf(place_user, ".\\UserInfo\\%s.dat", account_name);
-    sprintf(place_daotu, ".\\daotu\\%s\\%s.dat", account_name, mindname);
-
-    if ((fp = fopen(place_user, "rb")) == NULL) //´ò¿ªÊ§°Ü£¬Òì³£ÍË³ö
-    {
-        closegraph();
-        printf("\nFile UserInfo opening error.(from delete_mind1)\n");
-        delay(3000);
-        exit(1);
-    }
-    if ((ftmp = fopen(place_tp, "wb+")) == NULL) //´ò¿ªÊ§°Ü£¬Òì³£ÍË³ö
-    {
-        closegraph();
-        printf("\nFile UserInfo opening error.(from delete_mind2)\n");
-        delay(3000);
-        exit(1);
-    }
-    mind1 = (MIND *)malloc(sizeof(MIND));
-    if (mind1==NULL )//·ÖÅäÄÚ´æÊ§°Ü£¬ÍË³ö³ÌĞò
-    {
-        closegraph();
-        printf("\nMemory location failed.(from delete_mind)\n");
-        delay(3000);
-        exit(1);
-    }
-
-    fseek(fp, 0L, SEEK_END);
-    num = ftell(fp) / sizeof(MIND); //µÃµ½µ¼Í¼ÊıÁ¿
-
-    for (i = 0; i < num; i++)
-    {
-        fseek(fp, i * sizeof(MIND), SEEK_SET);
-        fread(mind1, sizeof(MIND), 1, fp);
-
-		if (strcmp(mind1->mindname, mindname)) //Èç¹ûºÍÒªÉ¾³ıµÄµ¼Í¼MIND²»Í¬
-        {
-            fwrite(mind1, sizeof(MIND), 1, ftmp);
-        }
-    }
-
-    if (fclose(fp) != 0) //¹Ø±ÕÎÄ¼ş´íÎó
-    {
-        closegraph();
-        printf("\nFile UserInfo closed error.(from delete_mind1)\n");
-        delay(3000);
-        exit(1);
-    }
-    if (fclose(ftmp) != 0) //¹Ø±ÕÎÄ¼ş´íÎó
-    {
-        closegraph();
-        printf("\nFile UserInfo closed error.(from delete_mind2)\n");
-        delay(3000);
-        exit(1);
-    }
-    free(mind1);
-    mind1 = NULL;
-
-    remove(place_user);
-    rename(place_tp, place_user);
-    remove(place_daotu);
-}
-
-
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
+    

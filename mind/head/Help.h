@@ -8,7 +8,7 @@ Function list :  help °ïÖú½çÃæ¹¦ÄÜ
                  help_page3 °ïÖúÒ³3
                  help_page4 °ïÖúÒ³4
 Attention:  
-Author:  ¼ÖÌïÍú£¬ÄßÆôÔ´
+Author:  ¼ÖÌïÍú
 History:  
 *******************************************/
 #ifndef _HELP_H_

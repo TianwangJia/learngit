@@ -13,8 +13,9 @@ History:
 /**************************************************
 Name: opena
 Function：完成打开功能
-Calls: 
-Called By: edit.c
+Calls:  input_mind
+        findmind
+Called By: operate
 Parameter: account_name 账户名
            daotu_info  思维导图信息
 Return: mstate 打开状态
