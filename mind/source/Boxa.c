@@ -132,7 +132,7 @@ void addbox(MINDBOX (*editp)[16], int ho, int ve) //还有微量bug，待de
 	int movei, movej; //移动计数变量
 	int check; //检测最后一排是否已经有元素 若check=HORI，
 	           //则最后一行没有框
-	int states; //框的修改方式存储变量
+	//int states; //框的修改方式存储变量
 	int flag = 0;
 	if(ho == HORI - 1)
 	{
@@ -171,14 +171,7 @@ void addbox(MINDBOX (*editp)[16], int ho, int ve) //还有微量bug，待de
 					{
 						for(movei = 0; movei < HORI; movei ++)
 						{
-							editp[movei][movej + 1].ste = editp[movei][movej].ste;
-							editp[movei][movej + 1].boxcolor = editp[movei][movej].boxcolor;
-							editp[movei][movej + 1].textcolor = editp[movei][movej].textcolor;
-							editp[movei][movej].ste = 0;
-							editp[movei][movej].boxcolor = BLACK;
-							editp[movei][movej].textcolor = BLACK;
-							strcpy(editp[movei][movej + 1].content, editp[movei][movej].content);
-							strcpy(editp[movei][movej].content, "");
+							movebox(&editp[movei][movej + 1], &editp[movei][movej]);
 						}
 					}
 					editp[ho + 1][j].ste = 1;

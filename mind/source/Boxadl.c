@@ -52,10 +52,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 	{
 		for(movei = ho; movei < HORI; movei ++)
 		{
-			editp[movei][ve].ste = 0;
-			strcpy(editp[movei][ve].content, "");
-			editp[movei][ve].boxcolor = BLACK;
-			editp[movei][ve].textcolor = BLACK;
+			vanbox(&editp[movei][ve]);
 		}
 		return;
 	}
@@ -75,10 +72,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 			{
 				for(movei = ho; movei < HORI; movei ++)
 				{
-					editp[movei][ve].ste = 0;
-					strcpy(editp[movei][ve].content, "");
-					editp[movei][ve].boxcolor = BLACK;
-			        editp[movei][ve].textcolor = BLACK;
+					vanbox(&editp[movei][ve]);
 				}
 				if(j > ve + 1)
 				{
@@ -86,10 +80,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 					{
 						for(movei = 0; movei < HORI; movei ++)
 						{
-							editp[movei][movej].ste = 0;
-					        strcpy(editp[movei][movej].content, "");
-							editp[movei][movej].boxcolor = BLACK;
-							editp[movei][movej].textcolor = BLACK;
+							vanbox(&editp[movei][movej]);
 						}
 					}
 				}
@@ -97,14 +88,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 				{
 					for(movei = 0; movei < HORI; movei ++)
 					{
-						editp[movei][ve + movej - j].ste = editp[movei][movej].ste;
-						editp[movei][ve + movej - j].boxcolor = editp[movei][movej].boxcolor;
-						editp[movei][ve + movej - j].textcolor = editp[movei][movej].textcolor;
-                        editp[movei][movej].ste = 0;
-						editp[movei][movej].boxcolor = BLACK;
-						editp[movei][movej].textcolor = BLACK;
-						strcpy(editp[movei][ve + movej - j].content, editp[movei][movej].content);
-						strcpy(editp[movei][movej].content,"");
+						movebox(&editp[movei][ve + movej - j], &editp[movei][movej]);
 					}
 				}
 			}
@@ -112,10 +96,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 			{
 				for(movei = ho; movei < HORI; movei ++)
 				{
-					editp[movei][ve].ste = 0;
-					strcpy(editp[movei][ve].content, "");
-					editp[movei][ve].boxcolor = BLACK;
-					editp[movei][ve].textcolor = BLACK;
+					vanbox(&editp[movei][ve]);
 				}
 				if(j > ve + 1) 
 				{
@@ -123,24 +104,14 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 					{
 						for(movei = 0; movei < HORI; movei ++)
 						{
-							editp[movei][movej].ste = 0;
-					        strcpy(editp[movei][movej].content, "");
-							editp[movei][movej].boxcolor = BLACK;
-							editp[movei][movej].textcolor = BLACK;
+							vanbox(&editp[movei][movej]);
 						}
 					}
 					for(movej = j; movej < VERT; movej ++)
 				    {
 						for(movei = 0; movei < HORI; movei ++)
 					    {
-							editp[movei][ve + movej - j + 1].ste = editp[movei][movej].ste;
-							editp[movei][ve + movej - j + 1].boxcolor = editp[movei][movej].boxcolor;
-							editp[movei][ve + movej - j + 1].textcolor = editp[movei][movej].textcolor;
-						    editp[movei][movej].ste = 0;
-							editp[movei][movej].boxcolor = BLACK;
-							editp[movei][movej].textcolor = BLACK;
-						    strcpy(editp[movei][ve + movej - j + 1].content, editp[movei][movej].content);
-						    strcpy(editp[movei][movej].content,"");
+							movebox(&editp[movei][ve + movej - j + 1], &editp[movei][movej]);
 					    }
 				    }
 				}
@@ -153,10 +124,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 			{
 				for(movei = ho; movei < HORI; movei ++)
 				{
-					editp[movei][ve].ste = 0;
-					strcpy(editp[movei][ve].content, "");
-					editp[movei][ve].boxcolor = BLACK;
-					editp[movei][ve].textcolor = BLACK;
+					vanbox(&editp[movei][ve]);
 				}
 				if(j > ve + 1)
 				{
@@ -164,10 +132,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 					{
 						for(movei = 0; movei < HORI; movei ++)
 						{
-							editp[movei][movej].ste = 0;
-					        strcpy(editp[movei][movej].content, "");
-							editp[movei][movej].boxcolor = BLACK;
-							editp[movei][movej].textcolor = BLACK;
+							vanbox(&editp[movei][movej]);
 						}
 					}
 				}
@@ -175,14 +140,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 				{
 					for(movei = 0; movei < HORI; movei ++)
 					{
-						editp[movei][ve + movej - j].ste = editp[movei][movej].ste;
-						editp[movei][ve + movej - j].boxcolor = editp[movei][movej].boxcolor;
-						editp[movei][ve + movej - j].textcolor = editp[movei][movej].textcolor;
-						editp[movei][movej].ste = 0;
-						editp[movei][movej].boxcolor = BLACK;
-						editp[movei][movej].textcolor = BLACK;
-						strcpy(editp[movei][ve + movej - j].content, editp[movei][movej].content);
-						strcpy(editp[movei][movej].content,"");
+						movebox(&editp[movei][ve + movej - j], &editp[movei][movej]);
 					}
 				}
 			}
@@ -190,14 +148,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 			{
 				for(movei = ho; movei < HORI; movei ++)
 				{
-					editp[movei][ve].ste = editp[movei][j].ste;
-					editp[movei][ve].boxcolor = editp[movei][j].boxcolor;
-					editp[movei][ve].textcolor = editp[movei][j].textcolor;
-					editp[movei][j].ste = 0;
-					editp[movei][j].boxcolor = BLACK;
-					editp[movei][j].textcolor = BLACK;
-					strcpy(editp[movei][ve].content, editp[movei][j].content);
-				    strcpy(editp[movei][j].content,"");
+					movebox(&editp[movei][ve], &editp[movei][j]);
 				}
 				if(j > ve + 1)
 				{
@@ -205,10 +156,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 					{
 						for(movei = 0; movei < HORI; movei ++)
 						{
-							editp[movei][movej].ste = 0;
-					        strcpy(editp[movei][movej].content, "");
-							editp[movei][movej].boxcolor = BLACK;
-							editp[movei][movej].textcolor = BLACK;
+							vanbox(&editp[movei][movej]);
 						}
 					}
 				}
@@ -216,14 +164,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 				{
 					for(movei = 0; movei < HORI; movei ++)
 					{
-						editp[movei][ve + movej - j].ste = editp[movei][movej].ste;
-						editp[movei][ve + movej - j].boxcolor = editp[movei][movej].boxcolor;
-						editp[movei][ve + movej - j].textcolor = editp[movei][movej].textcolor;
-						editp[movei][movej].ste = 0;
-						editp[movei][movej].boxcolor = BLACK;
-						editp[movei][movej].textcolor = BLACK;
-						strcpy(editp[movei][ve + movej - j].content, editp[movei][movej].content);
-						strcpy(editp[movei][movej].content,"");
+						movebox(&editp[movei][ve + movej - j], &editp[movei][movej]);
 					}
 				}
 			}
@@ -239,19 +180,13 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 			{
 				for(movei = ho; movei < HORI; movei ++)
 				{
-					editp[movei][ve].ste = 0;
-					strcpy(editp[movei][ve].content, "");
-					editp[movei][ve].boxcolor = BLACK;
-					editp[movei][ve].textcolor = BLACK;
+					vanbox(&editp[movei][ve]);
 				}
 				for(movej = ve + 1; movej < VERT; movej ++)
 				{
 					for(movei = 0; movei < HORI; movei ++)
 					{
-						editp[movei][movej].ste = 0;
-						strcpy(editp[movei][movej].content,"");
-						editp[movei][movej].boxcolor = BLACK;
-						editp[movei][movej].textcolor = BLACK;
+						vanbox(&editp[movei][movej]);
 					}
 				}
 			}
@@ -259,19 +194,13 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 			{
 				for(movei = ho; movei < HORI; movei ++)
 				{
-					editp[movei][ve].ste = 0;
-					strcpy(editp[movei][ve].content, "");
-					editp[movei][ve].ste = BLACK;
-					editp[movei][ve].ste = BLACK;
+					vanbox(&editp[movei][ve]);
 				}
 				for(movej = ve + 1; movej < VERT; movej ++)
 				{
 					for(movei = 0; movei < HORI; movei ++)
 					{
-						editp[movei][movej].ste = 0;
-						strcpy(editp[movei][movej].content, "");
-						editp[movei][movej].boxcolor = BLACK;
-						editp[movei][movej].textcolor = BLACK;
+						vanbox(&editp[movei][movej]);
 					}
 				}
 			}
@@ -282,10 +211,7 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 	{
 		for(movei = ho; movei < HORI; movei ++)
 		{
-			editp[movei][ve].ste = 0;
-			strcpy(editp[movei][ve].content, "");
-			editp[movei][ve].boxcolor = BLACK;
-			editp[movei][ve].textcolor = BLACK;
+			vanbox(&editp[movei][ve]);
 		}
 		if(ve + 1 < VERT)
 		{
@@ -293,12 +219,50 @@ void deletebox(MINDBOX (*editp)[16], int ho, int ve)
 			{
 				for(movei = 0; movei < HORI; movei ++)
 				{
-					editp[movei][movej].ste = 0;
-					strcpy(editp[movei][movej].content, "");
-					editp[movei][movej].boxcolor = BLACK;
-					editp[movei][movej].textcolor = BLACK;
+					vanbox(&editp[movei][movej]);
 				}
 			}
 		}
 	}
+}
+
+/**************************************************
+Name: movebox
+Function：移动信息函数
+Calls: 
+Called By: Boxa.c Boxadl.c Boxtr.c Boxtrdl.c
+Parameter: former 接收数据的单元
+           latter 释放数据的单元
+Return: 无
+Author: 倪启源
+Others: 
+**************************************************/
+void movebox(MINDBOX *former, MINDBOX *latter)
+{
+	former -> ste = latter -> ste;
+	former -> boxcolor = latter -> boxcolor;
+	former -> textcolor =latter -> textcolor;
+	latter -> ste = 0;
+	latter -> boxcolor = BLACK;
+	latter -> textcolor = BLACK;
+	strcpy(former -> content, latter -> content);
+	strcpy(latter -> content,"");
+}
+
+/**************************************************
+Name: vanbox
+Function：置空信息函数
+Calls: 
+Called By: Boxa.c Boxadl.c Boxtr.c Boxtrdl.c
+Parameter: clrbox 清除数据的单元
+Return: 无
+Author: 倪启源
+Others: 
+**************************************************/
+void vanbox(MINDBOX *clrbox)
+{
+	clrbox -> ste = 0;
+	strcpy(clrbox -> content, "");
+	clrbox -> boxcolor = BLACK;
+	clrbox -> textcolor = BLACK;
 }

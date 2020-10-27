@@ -170,14 +170,7 @@ void addbox_tr(MINDBOX (*editp)[VERTREE], int ho, int ve) //»¹ÓÐÎ¢Á¿bug£¬´ýde
 					{
 						for(movej = 0; movej < VERTREE; movej ++)
 						{
-							editp[movei + 1][movej].ste = editp[movei][movej].ste;
-							editp[movei + 1][movej].boxcolor = editp[movei][movej].boxcolor;
-							editp[movei + 1][movej].textcolor = editp[movei][movej].textcolor;
-							editp[movei][movej].ste = 0;
-							editp[movei][movej].boxcolor = BLACK;
-							editp[movei][movej].textcolor = BLACK;
-							strcpy(editp[movei + 1][movej].content, editp[movei][movej].content);
-							strcpy(editp[movei][movej].content, "");
+							movebox(&editp[movei + 1][movej], &editp[movei][movej]);
 						}
 					}
 					editp[i][ve + 1].ste = 1;
