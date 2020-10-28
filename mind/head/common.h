@@ -9,13 +9,13 @@
 #include <direct.h>
 #include"hz.h"
 #include <dos.h>
-#include <time.h>
 #include "MOUSE.h"
 #include "data.h"
 
 #include "Boxa.h"
 #include "Boxadl.h"
 #include "Boxdate.h"
+#include "Boxtrdl.h"
 #include "Boxfb.h"
 #include "Boxtr.h"
 #include "Edidate.h"

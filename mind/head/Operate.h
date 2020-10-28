@@ -6,7 +6,7 @@ Include:  newa.h
 Function list :  operate 编辑思维导图功能
                  operate_screen 绘制编辑页面
 Attention:  无
-Author:  贾田旺,倪启源
+Author:  贾田旺
 History:  无
 ***********************************************/
 #ifndef _OPERATE_H_
@@ -26,6 +26,7 @@ History:  无
 #include "Edittr.h"
 
 int operate(char *account_name); //编辑思维导图功能
-void operate_screen(); //绘制编辑页面
+
+void operate_screen(void); //绘制编辑页面
 
 #endif // !_OPERATE_H_

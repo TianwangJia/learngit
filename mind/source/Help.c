@@ -23,7 +23,7 @@ Return: page 页面跳转
 Author: 贾田旺
 Others: 
 **************************************************/
-int help()
+int help(void)
 {
     int index = 1; //表示翻页索引 目前范围1~4
     int click = 0; //表示方向键是否曾有效点击 0未点击 1点击

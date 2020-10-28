@@ -13,8 +13,8 @@ History:
 
 #include "EnterT.h"
 
-int sign_up(); //注册函数
+int sign_up(void); //注册函数
 
-void sign_up_screen(); //绘制注册函数界面
+void sign_up_screen(void); //绘制注册函数界面
 
 #endif // !_SIGNUP_H_

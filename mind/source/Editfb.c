@@ -1,9 +1,8 @@
 /**********************************************
-Description:  具体编辑思维导图功能及界面
-Function list :  edit 编辑页面功能
-                 edit_screen 绘制编辑页面
+Description:  具体编辑鱼骨图功能及界面
+Function list :  editfb 编辑鱼骨图功能
 Attention:  
-Author:  贾田旺
+Author:  倪启源
 History:  
 ***********************************************/
 
@@ -13,13 +12,13 @@ History:
 
 /**************************************************
 Name: editfb
-Function：编辑界面功能
+Function：编辑鱼骨图界面功能
 Calls: edit_screen
 Called By: operate
-Parameter: 未定
-Return: 未定
-Author: 贾田旺
-Others: 未完成
+Parameter: editp
+Return: 无
+Author: 倪启源
+Others: 无
 **************************************************/
 void editfb(FISHINFO *editp)
 {

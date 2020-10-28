@@ -15,6 +15,6 @@ History:
 
 int opena(char *account_name, MIND *daotu_info); //完成打开功能
 
-void open_screen(); //绘制打开界面
+void open_screen(void); //绘制打开界面
 
 #endif // !_OPEN_H_

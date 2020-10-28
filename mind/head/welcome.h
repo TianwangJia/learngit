@@ -11,7 +11,8 @@ History:
 #ifndef _WELCOME_H_
 #define _WELCOME_H_
 
-void welcome_screen(); //欢迎界面图形
-int welcome();         //欢迎界面函数
+void welcome_screen(void); //欢迎界面图形
+
+int welcome(void);         //欢迎界面函数
 
 #endif // !_WELCOME_H_

@@ -18,7 +18,7 @@ Return: page 页面跳转
 Author: 贾田旺
 Others: 无
 **************************************************/
-int welcome()
+int welcome(void)
 {
     int page = 1;
     int state = 0, pre_state = 0; //表示鼠标状态的相关值
@@ -198,7 +198,7 @@ Return: 无
 Author: 贾田旺
 Others: 无
 **************************************************/
-void welcome_screen()
+void welcome_screen(void)
 {
     //用于画m字母的数组
     int a[32] = {250, 170, 270, 60, 300, 60, 320, 140, 340, 60, 370, 60, 390, 170, 380, 170, 362, 80, 348, 80, 325, 170, 315, 170, 292, 80,

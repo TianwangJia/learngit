@@ -1,9 +1,10 @@
 /**********************************************
-Description:  编辑页面框图操作（增、删、查）函数集
-Function list :  
-		  
+Description:  编辑页面框图操作（查、画、增）函数集
+Function list :  findbox 寻找单向思维导图的框
+                 drawmind 画出当前的单向思维导图
+		         addbox 新增，新增单向思维导图的一个子节点
 Attention:
-Author:  贾田旺，倪启源
+Author:  倪启源
 History:
 ***********************************************/
 
@@ -12,15 +13,15 @@ History:
 
 /**************************************************
 Name: findbox
-Function：寻找框
-Calls: 
-Called By: edit.c
+Function：寻找单向思维导图的框
+Calls: drawmind
+Called By: edit
 Parameter: editp 受选择的数组
            ho 水平位置
 		   ve 竖直位置
+Return：flag 是否找到框
 Author: 倪启源
-return flag 是否找到框
-Others: 
+Others: 无
 **************************************************/
 int findbox(MINDBOX (*editp)[VERT], int *ho, int *ve)
 {
@@ -58,15 +59,15 @@ int findbox(MINDBOX (*editp)[VERT], int *ho, int *ve)
 
 /**************************************************
 Name: drawmind
-Function：画出当前的导图
-Calls: 
-Called By: operate.c
-Parameter: editp 要画出的导图
-Return: 
+Function：画出当前的单向思维导图
+Calls: 无
+Called By: edit
+Parameter: editp 当前的存储思维导图的数组
+Return：无
 Author: 倪启源
-Others: 
+Others: 无
 **************************************************/
-void drawmind(MINDBOX (*editp)[16])
+void drawmind(MINDBOX (*editp)[VERT])
 {
 	int i, j; //计数变量
 	int k; //上溯计数变量
@@ -103,10 +104,10 @@ void drawmind(MINDBOX (*editp)[16])
 
 /**************************************************
 Name: addbox
-Function：新增，新增一个子节点
-Calls: 
-Called By: edit.c
-Parameter: editp 要画出的导图
+Function：新增，新增单向思维导图的一个子节点
+Calls: movebox
+Called By: edit
+Parameter: editp 当前的存储思维导图的数组
            ho 水平位置
 		   ve 竖直位置
 Return: 无
@@ -126,7 +127,7 @@ Others: 判断新增的情况主要可以分为三种情况：
 		注意（2）情况一定要先检查看看纵坐标VERT-1处有无ste=1的框，
 		若有，则不执行任何操作（无法新增行！）
 **************************************************/
-void addbox(MINDBOX (*editp)[16], int ho, int ve) //还有微量bug，待de
+void addbox(MINDBOX (*editp)[VERT], int ho, int ve) //还有微量bug，待de
 {
 	int i, j, k; //计数变量
 	int movei, movej; //移动计数变量

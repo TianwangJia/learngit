@@ -1,7 +1,8 @@
 /**********************************************
-Description:  思维导图删框函数
-Function list :  
-		  
+Description:  思维导图删框函数 基础函数（移动框，清空框）
+Function list :  deletebox 删除，将所有的子节点一并删除，并对其余节点的坐标进行调整
+                 movebox 移动信息函数
+				 vanbox 置空信息函数
 Attention:
 Author:  倪启源
 History:
@@ -13,9 +14,10 @@ History:
 /**************************************************
 Name: deletebox
 Function：删除，将所有的子节点一并删除，并对其余节点的坐标进行调整
-Calls: 
-Called By: edit.c
-Parameter: editp 要画出的导图
+Calls: movebox
+       vanbox
+Called By: edit 
+Parameter: editp 当前的存储思维导图的数组
            ho 水平位置
 		   ve 竖直位置
 Return: 无
@@ -35,7 +37,7 @@ Others: 判断删除的情况：
 		state=1清空ve行开始的所有
 		state=0清空ve+1行开始的所有以及ve行ho及以后的所有
 **************************************************/
-void deletebox(MINDBOX (*editp)[16], int ho, int ve)
+void deletebox(MINDBOX (*editp)[VERT], int ho, int ve)
 {
 	int benhang; //遍历本行所使用的变量
 	int i, j; //横纵遍历

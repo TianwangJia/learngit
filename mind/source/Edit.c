@@ -2,8 +2,9 @@
 Description:  具体编辑思维导图功能及界面
 Function list :  edit 编辑页面功能
                 edit_screen 绘制编辑页面
+				color_screen 绘制调色板界面
 Attention:  
-Author:  贾田旺
+Author:  倪启源
 History:  
 ***********************************************/
 
@@ -15,11 +16,16 @@ History:
 Name: edit
 Function：编辑界面功能
 Calls: edit_screen
+       findbox
+	   drawmind
+	   addbox
+	   deletebox
+	   edit_mind
 Called By: operate
-Parameter: 未定
-Return: 未定
-Author: 贾田旺
-Others: 未完成
+Parameter: editp
+Return: 无
+Author: 倪启源
+Others: 无
 **************************************************/
 void edit(MINDBOX (*editp)[VERT])
 {
@@ -324,12 +330,14 @@ Name: edit_screen
 Function：绘制编辑界面
 Calls: 无
 Called By: edit
-Parameter: 未定
+           edittr
+		   editfb
+Parameter: 无
 Return: 无
-Author: 贾田旺
-Others: 
+Author: 倪启源
+Others: 无
 **************************************************/
-void edit_screen()
+void edit_screen(void)
 {
     //背景
     cleardevice();
@@ -369,13 +377,14 @@ void edit_screen()
 Name: color_screen
 Function：绘制调色板界面
 Calls: 无
-Called By: 
-Parameter: 未定
+Called By: edit
+           edittr
+Parameter: 无
 Return: 无
 Author: 倪启源
-Others: 
+Others: 无
 **************************************************/
-void color_screen()
+void color_screen(void)
 {
 	//画调色板
 	setcolor(BLACK);

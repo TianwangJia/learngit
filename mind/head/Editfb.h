@@ -1,10 +1,8 @@
 /**********************************************
-Description:  编辑页面函数头文件
-Include:  无
-Function list : edit 编辑页面功能
-                 edit_screen 绘制编辑页面 
+Description:  具体编辑鱼骨图功能及界面
+Function list :  editfb 编辑鱼骨图功能
 Attention:  
-Author:  贾田旺
+Author:  倪启源
 History:  
 ***********************************************/
 

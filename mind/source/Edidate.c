@@ -1,25 +1,29 @@
 /**********************************************
-Description:  具体编辑思维导图功能及界面
-Function list :  edit 编辑页面功能
-				 edit_screen 绘制编辑页面
+Description: 编辑时间轴功能及界面
+Function list :  edidate 编辑页面功能
+				 edidate_screen 绘制编辑页面
 Attention:  
-Author:  贾田旺
+Author:  倪启源
 History:  
 ***********************************************/
 
 #include "common.h"
 #include "Edidate.h"
-void edidate_screen();
 
 /**************************************************
-Name: editdate
-Function：编辑界面功能
+Name: edidate
+Function：编辑时间轴界面功能
 Calls: edidate_screen
+       finddate
+	   drawdate
+	   deletedate
+	   rank_time
+	   judge_time
 Called By: operate
-Parameter: 未定
-Return: 未定
-Author: 贾田旺
-Others: 未完成
+Parameter: edidate 待编辑时间轴的信息
+Return: 无
+Author: 倪启源
+Others: 无
 **************************************************/
 void edidate(DATEINFO *edidate)
 {
@@ -207,16 +211,16 @@ void edidate(DATEINFO *edidate)
 }
 
 /**************************************************
-Name: editdate_screen
+Name: edidate_screen
 Function：绘制编辑界面
 Calls: 无
-Called By: edit
-Parameter: 未定
+Called By: edidate
+Parameter: 无
 Return: 无
-Author: 贾田旺
-Others: 
+Author: 倪启源
+Others: 无
 **************************************************/
-void edidate_screen()
+void edidate_screen(void)
 {
     //背景
     cleardevice();

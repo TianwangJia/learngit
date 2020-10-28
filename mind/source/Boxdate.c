@@ -1,9 +1,10 @@
 /**********************************************
-Description:  编辑时间轴操作（增、删、查）函数集
-Function list :  
-		  
+Description:  编辑时间轴操作（找，画，删）函数集
+Function list : finddate 寻找时间
+                drawdate 画出当前的时间轴
+		        deletedate 删去某个时间
 Attention:
-Author:  贾田旺，倪启源
+Author:  倪启源
 History:
 ***********************************************/
 
@@ -13,13 +14,13 @@ History:
 /**************************************************
 Name: finddate
 Function：寻找时间
-Calls: 
-Called By: edit.c
-Parameter: edidate 受选择的数组
+Calls: drawdate
+Called By: edidate
+Parameter: edidate 受选择的时间轴
            pdatenum 位置
 Author: 倪启源
 return flag 是否找到框
-Others: 
+Others: 无
 **************************************************/
 int finddate(DATEINFO *edidate, int *pdatenum)
 {
@@ -70,12 +71,12 @@ int finddate(DATEINFO *edidate, int *pdatenum)
 /**************************************************
 Name: drawdate
 Function：画出当前的时间轴
-Calls: 
-Called By: operate.c
+Calls: 无
+Called By: edidate finddate
 Parameter: edidate 要画出的时间轴
-Return: 
+Return: 无
 Author: 倪启源
-Others: 
+Others: 无
 **************************************************/
 void drawdate(DATEINFO *edidate)
 {
@@ -157,12 +158,13 @@ void drawdate(DATEINFO *edidate)
 /**************************************************
 Name: deletedate
 Function：删去某个时间
-Calls: 
-Called By: operate.c
-Parameter: editp 
-Return: 
+Calls: 无
+Called By: edidate
+Parameter: edidate 时间轴
+           pdatenum 位置
+Return: 无
 Author: 倪启源
-Others: 
+Others: 无
 **************************************************/
 void deletedate(DATEINFO *edidate, int pdatenum)
 {

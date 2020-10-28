@@ -1,8 +1,11 @@
 /**********************************************
 Description:  编辑鱼骨图操作
-Function list : 
+Function list : findbone 寻找鱼骨
+                drawbone 画出当前的鱼骨图
+				deletebone 删去某根骨头
+				addbone 新增某根骨头
 Attention:
-Author:  贾田旺，倪启源
+Author:  倪启源
 History:
 ***********************************************/
 
@@ -12,13 +15,13 @@ History:
 /**************************************************
 Name: findbone
 Function：寻找鱼骨
-Calls: 
-Called By: edit.c
+Calls: drawbone
+Called By: editfb
 Parameter: edifish 受选择的数组
            pnum 鱼骨位置
 Author: 倪启源
 return flag 是否找到框
-Others: 
+Others: 无
 **************************************************/
 int findbone(FISHINFO *edifish, int *pnum)
 {
@@ -46,13 +49,13 @@ int findbone(FISHINFO *edifish, int *pnum)
 
 /**************************************************
 Name: drawbone
-Function：画出当前的导图
-Calls: 
-Called By: operate.c
-Parameter: editp 要画出的导图
-Return: 
+Function：画出当前的鱼骨图
+Calls: 无
+Called By: editfb findbone
+Parameter: editp 要画出的鱼骨图
+Return: 无
 Author: 倪启源
-Others: 
+Others: 无
 **************************************************/
 void drawbone(FISHINFO *edifish)
 {
@@ -94,12 +97,13 @@ void drawbone(FISHINFO *edifish)
 /**************************************************
 Name: deletebone
 Function：删去某根骨头
-Calls: 
-Called By: operate.c
-Parameter: editp 要画出的导图
-Return: 
+Calls: 无
+Called By: editfb
+Parameter: edifish 鱼骨图
+           pnum 鱼骨位置
+Return: 无
 Author: 倪启源
-Others: 
+Others: 无
 **************************************************/
 void deletebone(FISHINFO *edifish, int pnum)
 {
@@ -116,12 +120,13 @@ void deletebone(FISHINFO *edifish, int pnum)
 /**************************************************
 Name: addbone
 Function: 新增某根骨头
-Calls: 
-Called By: operate.c
-Parameter: editp 要画出的导图
-Return: 
+Calls: 无
+Called By: editfb
+Parameter: edifish 鱼骨图
+           pnum 鱼骨位置
+Return: 无
 Author: 倪启源
-Others: 
+Others: 无
 **************************************************/
 void addbone(FISHINFO *edifish, int pnum)
 {

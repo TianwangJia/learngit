@@ -495,7 +495,7 @@ Return: ÎŞ
 Author: ¼ÖÌïÍú
 Others: ÎŞ
 **************************************************/
-void operate_screen()
+void operate_screen(void)
 {
     //±³¾°
     cleardevice();

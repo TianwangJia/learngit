@@ -1,7 +1,6 @@
 /**********************************************
 Description:  具体编辑树状图功能及界面
 Function list :  edittr 编辑页面功能
-                 edittr_screen 绘制编辑页面
 Attention:  
 Author:  倪启源
 History:  
@@ -14,13 +13,13 @@ History:
 
 /**************************************************
 Name: edittr
-Function：编辑界面功能
+Function：编辑树状图界面功能
 Calls: edit_screen
 Called By: operate
-Parameter: 未定
-Return: 未定
-Author: 贾田旺
-Others: 未完成
+Parameter: 无
+Return: 无
+Author: 倪启源
+Others: 无
 **************************************************/
 void edittr(MINDBOX (*editp)[VERTREE])
 {

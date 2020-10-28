@@ -214,7 +214,7 @@ int rank_time(DATEINFO *timeline, DATEHAPPEN time)
 }
 
 /**************************************************
-Name: eidt_yugu
+Name: edit_yugu
 Function£º±à¼­Óã¹ÇÍ¼ÎÄ±¾
 Calls: ÎÞ
 Called By: Editfb

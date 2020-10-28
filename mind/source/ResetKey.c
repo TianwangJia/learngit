@@ -25,7 +25,7 @@ Return: page 页面跳转
 Author: 贾田旺
 Others: 无
 **************************************************/
-int reset_key()
+int reset_key(void)
 {
     int page = 4;
     int state = 0, pre_state = 0;                                    //表示鼠标状态的相关值
@@ -242,7 +242,7 @@ Return: 无
 Author: 贾田旺
 Others: 无
 **************************************************/
-void reset_key_screen()
+void reset_key_screen(void)
 {
     cleardevice();
     setfillstyle(SOLID_FILL, LIGHTCYAN);

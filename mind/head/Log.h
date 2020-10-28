@@ -15,6 +15,6 @@ History:
 
 int log(char *account_name); //登录函数
 
-void log_screen(); //绘制登录界面
+void log_screen(void); //绘制登录界面
 
 #endif // !_LOG_H_

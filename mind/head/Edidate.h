@@ -1,10 +1,9 @@
 /**********************************************
-Description:  编辑页面函数头文件
-Include:  无
-Function list : edit 编辑页面功能
-                 edit_screen 绘制编辑页面 
+Description: 编辑时间轴功能及界面
+Function list :  edidate 编辑页面功能
+				 edidate_screen 绘制编辑页面
 Attention:  
-Author:  贾田旺
+Author:  倪启源
 History:  
 ***********************************************/
 
@@ -15,9 +14,8 @@ History:
 #include "Boxdate.h"
 #include "EnterT.h"
 
-void edidate_screen();
+void edidate_screen(void);
 
 void edidate(DATEINFO *edidate);
-
 
 #endif

@@ -1,11 +1,13 @@
 /**********************************************
-Description:  编辑页面框图操作树状图函数集
-Include:  
-Function list :  
-Attention:  无
-Author:  贾田旺，倪启源
-History:  
+Description:  编辑时间轴操作（找，画，删）函数集
+Function list : finddate 寻找时间
+                drawdate 画出当前的时间轴
+		        deletedate 删去某个时间
+Attention:
+Author:  倪启源
+History:
 ***********************************************/
+
 #ifndef _BOXDATE_H_
 #define _BOXDATE_H_
 

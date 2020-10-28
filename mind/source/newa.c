@@ -1,24 +1,28 @@
 /**************************************************
 Description:完成新建界面及其功能
 Function list:   new 新建界面功能
-                 pagenew 绘制新建界面
+                 new_screen 绘制新建界面
 Attention:
 Author:倪启源
 **************************************************/
 
-#include <common.h>
-#include <newa.h>
+#include "common.h"
+#include "newa.h"
+#include "OperateT.h"
 /**************************************************
 Name: new
 Function: 新建界面相关信息与跳转功能
-Calls:
+Calls: input_mind
+       newmind
+	   new_screen
 Called by:main
 Parameter: account_name 用户名
-           daotu 用于存放指定的思维导图
+           daotu 用于存放指定的思维导图信息
 Return: mstate 新建状态
-Others：
+Author: 倪启源
+Others：无
 **************************************************/
-int new (char *account_name, MIND *daotu)
+int new(char *account_name, MIND *daotu)
 {
 	int mstate = 2;				  //表示新建导图状态 2表示仍在页面中 0未新建返回 1表示新建返回
 	MIND new_mind = {0, ""};	  //新建思维导图信息暂时存放处
@@ -256,13 +260,14 @@ int new (char *account_name, MIND *daotu)
 /**************************************************
 Name: new_screen
 Function：画新建界面
-Calls: 
+Calls: 无
 Called By: new
-Parameter：
-Return: 
-Others: 
+Parameter：无
+Return: 无
+Author: 倪启源
+Others: 无
 **************************************************/
-void new_screen()
+void new_screen(void)
 {
 	int i, j; //画框计数用
 	int head[8] = {465, 75, 440, 95, 490, 95, 465, 75};

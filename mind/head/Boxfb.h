@@ -1,11 +1,14 @@
 /**********************************************
-Description:  编辑页面框图操作树状图函数集
-Include:  
-Function list :  
-Attention:  无
-Author:  贾田旺，倪启源
-History:  
+Description:  编辑鱼骨图操作
+Function list : findbone 寻找鱼骨
+                drawbone 画出当前的鱼骨图
+				deletebone 删去某根骨头
+				addbone 新增某根骨头
+Attention:
+Author:  倪启源
+History:
 ***********************************************/
+
 #ifndef _BOXFB_H_
 #define _BOXFB_H_
 

@@ -1,11 +1,13 @@
 /**********************************************
-Description:  编辑页面框图操作树状图函数集
-Include:  
-Function list :  
-Attention:  无
-Author:  贾田旺，倪启源
-History:  
+Description:  编辑页面框图操作（查、画、增）函数集
+Function list :  findbox 寻找单向思维导图的框
+                 drawmind 画出当前的单向思维导图
+		         addbox 新增，新增单向思维导图的一个子节点
+Attention:
+Author:  倪启源
+History:
 ***********************************************/
+
 #ifndef _BOXA_H_
 #define _BOXA_H_
 

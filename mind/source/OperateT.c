@@ -3,10 +3,9 @@ Description:  ±à¼­Ò³Ãæ¼°¸½ÊôÒ³ÃæËùÓÃ¹¤¾ßº¯Êı
 Function list :  daotujud  ÅĞ¶Ïµ¼Í¼ÎÄ¼şÊÇ·ñÖØ¸´
                  newmind   ĞÂ½¨Ò»¸öµ¼Í¼ÎÄ¼ş
                  input_mind ÊäÈë²¢ÏÔÊ¾ĞÅÏ¢º¯Êı
-                 findmind  ÕÒµ½ÓÃ»§ÖĞµÄMIND½á¹¹Ìå
-                 delete_mind É¾³ıÓÃ»§ÎÄ¼şÖĞµÄÖ¸¶¨MIND½á¹¹Ìå£¬²¢É¾³ı¶ÔÓ¦µÄµ¼Í¼ÎÄ¼ş
+				 newdrt ĞÂ½¨Ò»¸ö´æ·ÅĞÂÓÃ»§µ¼Í¼ÎÄ¼şµÄÎÄ¼ş¼Ğ
 Attention:
-Author:  ¼ÖÌïÍú£¬ÄßÆôÔ´
+Author:  ÄßÆôÔ´
 History:
 ***********************************************/
 
@@ -16,13 +15,13 @@ History:
 /**************************************************
 Name: daotujud
 Function£ºÅĞ¶Ïµ¼Í¼ÎÄ¼şÊÇ·ñÖØ¸´
-Calls:
+Calls:ÎŞ
 Called By: new Open.c
 Parameter£ºaccount_name ÓÃ»§Ãû
            mind_name ´ıĞÂ½¨µÄË¼Î¬µ¼Í¼ÎÄ¼şÃû
 Return: ±êÊ¶£¬1ÎªÖØ¸´£¬0Î´ÖØ¸´
 Author: ÄßÆôÔ´
-Others:
+Others:ÎŞ
 **************************************************/
 
 int daotujud(char *account_name, char *mind_name)
@@ -84,15 +83,14 @@ int daotujud(char *account_name, char *mind_name)
 /**************************************************
 Name: newmind
 Function£º¸ø¶ÔÓ¦ÓÃ»§ĞÂ½¨Ò»¸öË¼Î¬µ¼Í¼µÄÎÄ¼ş
-Calls:
+Calls:ÎŞ
 Called By: new
-Parameter£ºtype ĞÂ½¨µÄË¼Î¬µ¼Í¼µÄÖÖÀà±êÊ¶·û
-           account_name ÓÃ»§Ãû ĞÂ½¨ºó½«ÎÄÏ×ĞÅÏ¢´æ´¢µ½¶ÔÓ¦ÓÃ»§ÃûµÄÎÄ¼şÖĞ
+Parameter: account_name ÓÃ»§Ãû ĞÂ½¨ºó½«ÎÄÏ×ĞÅÏ¢´æ´¢µ½¶ÔÓ¦ÓÃ»§ÃûµÄÎÄ¼şÖĞ
            mind_name ĞÂ½¨µÄË¼Î¬µ¼Í¼ÎÄ¼şÃû
 		   dt ÔİÊ±´æ·ÅË¼Î¬µ¼Í¼ĞÅÏ¢µÄ½á¹¹
 Return: ÎŞ
 Author: ÄßÆôÔ´
-Others:
+Others: ÎŞ
 **************************************************/
 void newmind(char *account_name, char *mind_name, MIND *dt) //º¯ÊıÀàĞÍ´ı¶¨£¡
 {
@@ -120,8 +118,8 @@ void newmind(char *account_name, char *mind_name, MIND *dt) //º¯ÊıÀàĞÍ´ı¶¨£¡
 		{
 			new_boxestr[i][j].ste = 0;
 			strcpy(new_boxestr[i][j].content, "");
-			new_boxes[i][j].boxcolor = BLACK;
-			new_boxes[i][j].textcolor = BLACK;
+			new_boxestr[i][j].boxcolor = BLACK;
+			new_boxestr[i][j].textcolor = BLACK;
 		}
 	}
 	for(i = 0; i < BONEMAX; i ++)
@@ -171,23 +169,23 @@ void newmind(char *account_name, char *mind_name, MIND *dt) //º¯ÊıÀàĞÍ´ı¶¨£¡
 		case 2: //³õÊ¼»¯Ê÷×´Í¼²¢±£´æ
 		new_boxestr[0][0].ste = 1;
 		strcpy(new_boxestr[0][0].content,"");
-		new_boxes[0][0].textcolor = BLACK;
-		new_boxes[0][0].boxcolor = BLACK;
+		new_boxestr[0][0].textcolor = BLACK;
+		new_boxestr[0][0].boxcolor = BLACK;
 		
 		new_boxestr[0][1].ste = 1;
 		strcpy(new_boxestr[0][1].content,"");
-		new_boxes[0][1].textcolor = BLACK;
-		new_boxes[0][1].boxcolor = BLACK;
+		new_boxestr[0][1].textcolor = BLACK;
+		new_boxestr[0][1].boxcolor = BLACK;
 		
 		new_boxestr[1][1].ste = 1;
 		strcpy(new_boxestr[1][1].content,"");
-		new_boxes[1][1].textcolor = BLACK;
-		new_boxes[1][1].boxcolor = BLACK;
+		new_boxestr[1][1].textcolor = BLACK;
+		new_boxestr[1][1].boxcolor = BLACK;
 		
 		new_boxestr[2][1].ste = 1;
 		strcpy(new_boxestr[2][1].content,"");
-		new_boxes[2][1].textcolor = BLACK;
-		new_boxes[2][1].boxcolor = BLACK;
+		new_boxestr[2][1].textcolor = BLACK;
+		new_boxestr[2][1].boxcolor = BLACK;
 		
 		fseek(fp, 0, 0);
 	    fwrite(&(new_boxestr[0][0]), sizeof(MINDBOX), HORI * VERT, fp);
@@ -321,12 +319,12 @@ void input_mind(int x, int y, int size, ENTER *content) //½«ĞÅÏ¢ÊäÈëµ½contentÖĞ£
 /**************************************************
 Name: newdrt
 Function£ºĞÂ½¨Ò»¸ö´æ·ÅĞÂÓÃ»§µ¼Í¼ÎÄ¼şµÄÎÄ¼ş¼Ğ
-Calls: 
+Calls: ÎŞ
 Called By: sign_up
 Parameter: account_name ÓÃ»§Ãû
-Return: 
+Return: ÎŞ
 Author: ÄßÆôÔ´
-Others: 
+Others: ÎŞ
 **************************************************/
 void newdrt(char *account_name)
 {

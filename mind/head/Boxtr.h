@@ -1,11 +1,13 @@
 /**********************************************
-Description:  编辑页面框图操作树状图函数集
-Include:  
-Function list :  
-Attention:  无
-Author:  贾田旺，倪启源
-History:  
+Description:  编辑树状图操作（查、画、增）函数集
+Function list :  findbox_tr 寻找树状图的框
+                 drawmind_tr 画出当前的树状图
+				 addbox_tr 新增，新增树状图一个子节点
+Attention:
+Author:  倪启源
+History:
 ***********************************************/
+
 #ifndef _BOXTR_H_
 #define _BOXTR_H_
 

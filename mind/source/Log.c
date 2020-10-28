@@ -243,7 +243,7 @@ Return: ÎÞ
 Author: ¼ÖÌïÍú
 Others: ÎÞ
 **************************************************/
-void log_screen()
+void log_screen(void)
 {
     cleardevice();
     setfillstyle(SOLID_FILL, LIGHTCYAN);

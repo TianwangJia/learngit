@@ -34,7 +34,7 @@ void new_file(char *name); //为新注册的用户建立一个文件保存其账户信息
 
 int right_ID(char *name, char *card); //判断身份证号是否正确
 
-void rewrite(char *name, char *newkey); //写入新密码
+void rewrite_key(char *name, char *newkey); //写入新密码
 
 int right_key(char *name, char *password); //判断密码是否正确
 

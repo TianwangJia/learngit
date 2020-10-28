@@ -14,7 +14,7 @@ History:
 #ifndef _HELP_H_
 #define _HELP_H_
 
-int help(); //帮助界面功能
+int help(void); //帮助界面功能
 
 void help_screen(int (*a)[8]);//绘制帮助界面
 

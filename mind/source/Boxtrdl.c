@@ -1,7 +1,6 @@
 /**********************************************
-Description:  思维导图删框函数
-Function list :  
-		  
+Description:  树状图删框函数
+Function list :  deletebox_tr 删除，将所有的子节点一并删除，并对其余节点的坐标进行调整
 Attention:
 Author:  倪启源
 History:
@@ -11,29 +10,17 @@ History:
 #include "Boxtrdl.h"
 
 /**************************************************
-Name: deletebox
+Name: deletebox_tr
 Function：删除，将所有的子节点一并删除，并对其余节点的坐标进行调整
-Calls: 
-Called By: edit.c
+Calls: movebox
+       vanbox
+Called By: edit
 Parameter: editp 要画出的导图
            ho 水平位置
 		   ve 竖直位置
 Return: 无
 Author: 倪启源
-Others: 判断删除的情况：
-        先遍历本行，如果出现的第一个框是自己，记state=1
-		否则记state=0
-		从下一行开始遍历，如果第一框在横坐标在本框之前
-		state=1全体上移至ve
-		state=0全体上移至ve+1
-		如果第一框坐标等于本框
-		state=1全体上移至ve
-		state=0全体上移至ve，本行只从横坐标ho开始移动
-		如果第一框出现在本框之后
-		继续下一轮循环
-		如果无框
-		state=1清空ve行开始的所有
-		state=0清空ve+1行开始的所有以及ve行ho及以后的所有
+Others: 具体思路可参考单向思维导图
 **************************************************/
 void deletebox_tr(MINDBOX (*editp)[VERTREE], int ho, int ve)
 {

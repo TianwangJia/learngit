@@ -1,9 +1,10 @@
 /**********************************************
-Description:  编辑页面框图操作（增、删、查）函数集
-Function list :  
-		  
+Description:  编辑树状图操作（查、画、增）函数集
+Function list :  findbox_tr 寻找树状图的框
+                 drawmind_tr 画出当前的树状图
+				 addbox_tr 新增，新增树状图一个子节点
 Attention:
-Author:  贾田旺，倪启源
+Author:  倪启源
 History:
 ***********************************************/
 
@@ -11,16 +12,16 @@ History:
 #include "Boxtr.h"
 
 /**************************************************
-Name: findbox
-Function：寻找框
-Calls: 
-Called By: edittr.c
+Name: findbox_tr
+Function：寻找树状图的框
+Calls: drawmind_tr
+Called By: edittr
 Parameter: editp 受选择的数组
            ho 水平位置
 		   ve 竖直位置
+Return：flag 是否找到框
 Author: 倪启源
-return flag 是否找到框
-Others: 
+Others: 无
 **************************************************/
 int findbox_tr(MINDBOX (*editp)[VERTREE], int *ho, int *ve)
 {
@@ -57,14 +58,14 @@ int findbox_tr(MINDBOX (*editp)[VERTREE], int *ho, int *ve)
 }
 
 /**************************************************
-Name: drawmind
-Function：画出当前的导图
-Calls: 
-Called By: operate.c
-Parameter: editp 要画出的导图
-Return: 
+Name: drawmind_tr
+Function：画出当前的树状图
+Calls: 无
+Called By: edittr
+Parameter: editp 当前的存储树状图的数组
+Return: 无
 Author: 倪启源
-Others: 
+Others: 无
 **************************************************/
 void drawmind_tr(MINDBOX (*editp)[VERTREE])
 {
@@ -101,29 +102,16 @@ void drawmind_tr(MINDBOX (*editp)[VERTREE])
 }
 
 /**************************************************
-Name: addbox
-Function：新增，新增一个子节点
-Calls: 
+Name: addbox_tr
+Function：新增，新增树状图一个子节点
+Calls: movebox
 Called By: edit.c
 Parameter: editp 要画出的导图
            ho 水平位置
 		   ve 竖直位置
 Return: 无
 Author: 倪启源
-Others: 判断新增的情况主要可以分为三种情况：
-        1，选中的框的ho值为5，这个时候会溢出，点击addbox无反应
-		（判断在函数调用之前完成）
-		2，选中的框ho值小于5
-		（1）如果该框（ho，ve）之后的（ho+1，ve）的ste值等于0，
-		 则直接新增在这个框即可
-		（2）从纵坐标ve+1开始遍历，每一行从最右边开始遍历，如果
-		遍历到ho+1仍然ste=0，则直接从这一行开始的所有行下移一行
-		在这一行的横坐标ho+1处新增一个框。
-		若遇到ste=1的情况，则判断该行的横坐标ho处有无ste=1
-		a.ste=1，则这一行的横坐标ho+1处为新增的框
-		b.ste=0，开始遍历下一行
-		注意（2）情况一定要先检查看看纵坐标VERT-1处有无ste=1的框，
-		若有，则不执行任何操作（无法新增行！）
+Others: 具体思路可参考单向思维导图
 **************************************************/
 void addbox_tr(MINDBOX (*editp)[VERTREE], int ho, int ve) //还有微量bug，待de
 {

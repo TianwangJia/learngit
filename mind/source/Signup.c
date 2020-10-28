@@ -26,7 +26,7 @@ Return: page 页面跳转
 Author: 贾田旺
 Others: 无
 **************************************************/
-int sign_up()
+int sign_up(void)
 {
     int page = 2;
     int state = 0, pre_state = 0;                                     //表示鼠标状态的相关值
@@ -246,7 +246,7 @@ Return: 无
 Author: 贾田旺
 Others: 无
 **************************************************/
-void sign_up_screen()
+void sign_up_screen(void)
 {
     cleardevice();
     setfillstyle(SOLID_FILL, LIGHTCYAN);
