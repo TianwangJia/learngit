@@ -34,6 +34,7 @@ int operate(char *account_name)
 	char temdt[30 + 1]; //当前思维导图文件位置索引
 	FILE *fp; //存放当前打开的文件指针
 	int open_ste; //存放打开状态
+	int new_ste;
 	MINDBOX oper_temp[HORI][VERT];
 	MINDBOX oper_temptr[HORI][VERTREE];
 	FISHINFO oper_fish;
@@ -115,7 +116,8 @@ int operate(char *account_name)
         {
 			clrmous(MouseX, MouseY);
             delay(5);
-            if((new(account_name, &daotu_info) == 1)||daotu_info.type != 0)
+			new_ste = new(account_name, &daotu_info);
+            if((new_ste == 1)||daotu_info.type != 0)
 			{
 				operate_screen();
                 puthz(16, 4, "导图名：", 16, 16, BLACK);
@@ -142,23 +144,35 @@ int operate(char *account_name)
 				switch(daotu_info.type)
 				{
 					case 1:
-					fseek(fp, 0, 0);
-		            fread(&(oper_temp[0][0]), sizeof(MINDBOX), HORI * VERT, fp);
+					if(new_ste == 1)
+					{
+						fseek(fp, 0, 0);
+		                fread(&(oper_temp[0][0]), sizeof(MINDBOX), HORI * VERT, fp);
+					}
 					drawmind(oper_temp);
 					break;
 					case 2:
-					fseek(fp, 0, 0);
-		            fread(&(oper_temptr[0][0]), sizeof(MINDBOX), HORI * VERTREE, fp);
+					if(new_ste == 1)
+					{
+						fseek(fp, 0, 0);
+		                fread(&(oper_temptr[0][0]), sizeof(MINDBOX), HORI * VERTREE, fp);
+					}
 					drawmind_tr(oper_temptr);
 					break;
 					case 3:
-					fseek(fp, 0, 0);
-					fread(&(oper_fish), sizeof(FISHINFO), 1, fp);
+					if(new_ste == 1)
+					{
+						fseek(fp, 0, 0);
+					    fread(&(oper_fish), sizeof(FISHINFO), 1, fp);
+					}
 					drawbone(&oper_fish);
 					break;
 					case 4:
-					fseek(fp, 0, 0);
-					fread(&(oper_date), sizeof(DATEINFO), 1, fp);
+					if(new_ste == 1)
+					{
+						fseek(fp, 0, 0);
+					    fread(&(oper_date), sizeof(DATEINFO), 1, fp);
+					}
 					drawdate(&oper_date);
 					break;
 				}
@@ -225,23 +239,35 @@ int operate(char *account_name)
 			switch(daotu_info.type)
 			{
 				case 1:
-				fseek(fp, 0, 0);
-		        fread(&(oper_temp[0][0]), sizeof(MINDBOX), HORI * VERT, fp);
+				if(open_ste == 1)
+				{
+					fseek(fp, 0, 0);
+		            fread(&(oper_temp[0][0]), sizeof(MINDBOX), HORI * VERT, fp);
+				}
 				drawmind(oper_temp);
 				break;
 				case 2:
-				fseek(fp, 0, 0);
-		        fread(&(oper_temptr[0][0]), sizeof(MINDBOX), HORI * VERTREE, fp);
+				if(open_ste == 1)
+				{
+					fseek(fp, 0, 0);
+		            fread(&(oper_temptr[0][0]), sizeof(MINDBOX), HORI * VERTREE, fp);
+				}
 				drawmind_tr(oper_temptr);
 				break;
 				case 3:
-			    fseek(fp, 0, 0);
-				fread(&(oper_fish), sizeof(FISHINFO), 1, fp);
-				drawbone(&oper_fish);
+				if(open_ste == 1)
+				{
+					fseek(fp, 0, 0);
+				    fread(&(oper_fish), sizeof(FISHINFO), 1, fp);
+				}
+			    drawbone(&oper_fish);
 				break;
 				case 4:
-				fseek(fp, 0, 0);
-				fread(&(oper_date), sizeof(DATEINFO), 1, fp);
+				if(open_ste == 1)
+				{
+					fseek(fp, 0, 0);
+				    fread(&(oper_date), sizeof(DATEINFO), 1, fp);
+				}
 				drawdate(&oper_date);
 				break;
 			}

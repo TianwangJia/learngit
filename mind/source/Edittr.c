@@ -9,7 +9,6 @@ History:
 #include "common.h"
 #include "Edit.h"
 #include "Edittr.h"
-#include <graphics.h>
 
 /**************************************************
 Name: edittr
