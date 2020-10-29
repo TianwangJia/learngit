@@ -212,14 +212,14 @@ int judge_ID(char *card)
             flag = 0;
             break;
         }
-        if ((i == 17) && (card[i] < '0' || card[i] > '9') && (card[i] != 'x' || card[i] != 'X')) //若在最后一位出现不是x或X的非数字字符，则错误
+        if ((i == 17) && (card[i] < '0' || card[i] > '9') && (card[i] != 'x' && card[i] != 'X')) //若在最后一位出现不是x或X的非数字字符，则错误
         {
             flag = 0;
             break;
         }
     }
 
-    return flag;
+	return flag;
 }
 
 /**************************************************
