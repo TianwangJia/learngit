@@ -168,31 +168,46 @@ void edittr(MINDBOX (*editp)[VERTREE])
 			setlinestyle(0, 0, 1);
 			if(mouse_press(504 + 17, 280, 524 + 17, 300) == 1)
 			{
-				color_screen();
+                clrmous(MouseX, MouseY);
+                delay(5); //画图前先清除鼠标，防止干扰
+
+                color_screen();
 				colortemp = BLACK;
 				rectangle(504 + 17, 280, 524 + 17, 300);
 			}
 			else if(mouse_press(524 + 17, 280, 544 + 17, 300) == 1)
 			{
-				color_screen();
+                clrmous(MouseX, MouseY);
+                delay(5); //画图前先清除鼠标，防止干扰
+
+                color_screen();
 				colortemp = CYAN;
 				rectangle(524 + 17, 280, 544 + 17, 300);
 			}
 			else if(mouse_press(544 + 17, 280, 564 + 17, 300) == 1)
 			{
-				color_screen();
+                clrmous(MouseX, MouseY);
+                delay(5); //画图前先清除鼠标，防止干扰
+
+                color_screen();
 				colortemp = GREEN;
 				rectangle(544 + 17, 280, 564 + 17, 300);
 			}
 			else if(mouse_press(564 + 17, 280, 584 + 17, 300) == 1)
 			{
-				color_screen();
+                clrmous(MouseX, MouseY);
+                delay(5); //画图前先清除鼠标，防止干扰
+
+                color_screen();
 				colortemp = BLUE;
 				rectangle(564 + 17, 280, 584 + 17, 300);
 			}
 			else if(mouse_press(584 + 17, 280, 604 + 17, 300) == 1)
 			{
-				color_screen();
+                clrmous(MouseX, MouseY);
+                delay(5); //画图前先清除鼠标，防止干扰
+
+                color_screen();
 				colortemp = LIGHTGRAY;
 				rectangle(584 + 17, 280, 604 + 17, 300);
 			}

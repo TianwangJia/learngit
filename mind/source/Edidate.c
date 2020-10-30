@@ -158,14 +158,16 @@ void edidate(DATEINFO *edidate)
             if (find_flag == 1)
             {
                 deletedate(edidate, rankdate);
-                edidate_screen();
+                setfillstyle(SOLID_FILL, WHITE);
+			    bar(0, 24, 496, 480);
                 drawdate(edidate);
                 find_flag = 0;
             }
         }
         else if (mouse_press(0, 24, 496, 480) == 1) //Ñ¡Òª±à¼­µÄ¿ò
         {
-            edidate_screen();
+            setfillstyle(SOLID_FILL, WHITE);
+			bar(0, 24, 496, 480);
             drawdate(edidate);
             find_flag = finddate(edidate, &rankdate);
         }

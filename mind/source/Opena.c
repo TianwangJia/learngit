@@ -38,6 +38,14 @@ int opena(char *account_name, MIND *daotu_info)
     {
         newmouse(&MouseX, &MouseY, &press);
 
+        if(mindname.flag!=1)
+        {
+            while(bioskey(1))
+            {
+                getch();
+            }
+        }
+
         input_mind(120 + 128 + 4, 100 + 128 + 4, 7, &mindname);
 
         if (mouse_press(120 + 80 + 80 + 80, 100 + 192, 120 + 80 + 80 + 80 + 80, 100 + 192 + 32) == 2) //È¡Ïû¼üÇÒÎ´µã»÷

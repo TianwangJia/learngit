@@ -310,6 +310,8 @@ void input_mind(int x, int y, int size, ENTER *content) //½«ÐÅÏ¢ÊäÈëµ½contentÖÐ£
             bar(content->x1 + 2, content->y1 + 2, content->x2 - 2, content->y2 - 2); //Ã¿Ò»²½ÏÔÊ¾Ö®Ç°ÏÈÓÃ±³¾°É«¸²¸ÇµôÔ­À´ÐÅÏ¢
 
             setcolor(DARKGRAY);
+            clrmous(MouseX, MouseY);
+            delay(5); 
             outtextxy(x, y, content->str);
             line(x + (content->cursor) * (2 * size - 2) + 3, y, x + (content->cursor) * (2 * size - 2) + 3, y + 2 * (2 * size - 2));
         }

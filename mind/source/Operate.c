@@ -131,7 +131,7 @@ int operate(char *account_name)
 				if(fp != NULL)
 				{
 					fclose(fp);
-				}
+				}	
 				sprintf(temdt, ".\\daotu\\%s\\%s.dat", account_name,daotu_info.mindname);//写在另一个函数里面
 				if((fp = fopen(temdt,"rb+")) == NULL)//打开失败，异常退出
 				{
@@ -513,7 +513,7 @@ int operate(char *account_name)
 
 /**************************************************
 Name: operate_screen
-Function：绘制编辑页面
+Function：绘制操作页面
 Calls: 无
 Called By: operate
 Parameter: a 储存方向键形状数组

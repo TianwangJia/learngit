@@ -11,7 +11,7 @@ History:
 #ifndef _BOXADL_H_
 #define _BOXADL_H_
 
-void deletebox(MINDBOX (*editp)[16], int ho, int ve);
+void deletebox(MINDBOX (*editp)[VERT], int ho, int ve);
 
 void movebox(MINDBOX *former, MINDBOX *latter);
 
