@@ -122,7 +122,7 @@ int log(char *account_name)
             }
             else if (password.str[0] == '\0')
             {
-                puthz(98 + 488 - 16 * 5, 188 + 32 + 4, "未输入密码", 16, 16, RED);
+                puthz(98 + 448 - 16 * 5, 188 + 32 + 4, "未输入密码", 16, 16, RED);
             }
 
             //判断用户名是否存在
