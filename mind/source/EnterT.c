@@ -331,7 +331,7 @@ Function：判断身份证号是否正确
 Calls: 无
 Called By: ResetKey
 Parameter: name 用户名
-           card 用户输入的身份证号
+            card 用户输入的身份证号
 Return: flag  1 表示正确  2 表示错误
 Author: 贾田旺
 Others: 无
