@@ -123,7 +123,7 @@ int judge_time(DATEHAPPEN time)
     }
     else
     {
-        if (time.month % 4 == 0 && time.month % 100 || time.month % 400 == 0) //ÈòÄê
+        if ((time.year % 4 == 0 && time.year % 100) || time.year % 400 == 0) //ÈòÄê
         {
             if (time.day <= monthdays[2] + 1)
                 return 1;
